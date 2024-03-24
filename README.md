@@ -2,6 +2,7 @@
 This system will have 10+ users and there will be a table to show the items in stock and date entered, and entered by, and delete option.
 
 # README
+### Note: Change branch to master to see code
 
 ## Steps to Run Server
 1. Make sure you have Node.js and npm installed on your system.
