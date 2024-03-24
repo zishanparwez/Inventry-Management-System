@@ -1,24 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import Navbar from './components/Navbar';
+import { ApplicationCtx } from './context/ApplicationCtx';
+import { routes } from './Routes';
+import {Route, Routes} from 'react-router-dom';
+import {useState } from "react";
 
 function App() {
+
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+
   return (
+    <ApplicationCtx.Provider value={{isUserLoggedIn, setIsUserLoggedIn}}>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar />
+      <Routes>
+        {routes.map(({path, component}, index) => (
+          <Route path={path} element={component} key={index}/>
+        ))}
+      </Routes>
     </div>
+    </ApplicationCtx.Provider>
   );
 }
 
